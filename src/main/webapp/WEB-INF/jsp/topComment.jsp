@@ -8,7 +8,7 @@
 		<div class="container">
 			<h1>Your guess</h1>
 			<div class="col-md-12">
-				<div class="bs-callout">
+				<div class="highlight">
 					<p>${result.guess}</p>
 				</div>
 			</div>
@@ -18,13 +18,13 @@
 				</small>
 			</h1>
 			<div class="col-md-12">
-				<div class="bs-callout">
+				<div class="highlight">
 					<div class="markdownable">${result.topComment.body}</div>
 				</div>
 			</div>
 			<h1>Match result <small id="matchPercent"></small></h1>
 			<div class="col-md-12">
-				<div class="bs-callout">
+				<div class="highlight">
 					<p class="markdownable highlightable">${result.topComment.body}</p>
 				</div>
 			</div>
@@ -52,9 +52,9 @@
 					highlightedLength += $(this).text().length;
 				});
 				
-				var x = highlightedLength / topCommentLength;
+				var matchPercent = Math.round((highlightedLength / topCommentLength) * 100, 2);
 				
-				$("#matchPercent").text(Math.round(x*100, 2) + "% match");
+				$("#matchPercent").text(matchPercent + "% match");
 			});
 			
 		</script>
