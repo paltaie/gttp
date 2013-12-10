@@ -7,7 +7,7 @@
 	<body>
 		<div class="container">
 			<div class="col-md-12">
-				<h1>Guess the top post</h1>
+				<h1>Welcome to Guess the Top Post!</h1>
 				<form role="form" action="<c:url value="/topComment.gttp"/>">
 					<div class="form-group col-md-6">
 						<label for="subreddit">Subreddit (http://www.reddit.com/r/<code>pics</code>/comments/92dd8/test_post_please_ignore/)</label>
