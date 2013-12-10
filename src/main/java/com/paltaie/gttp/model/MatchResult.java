@@ -5,9 +5,9 @@ import java.util.List;
 import com.cd.reddit.json.mapping.RedditComment;
 
 public class MatchResult {
-	public RedditComment topComment;
-	public String guess;
-	public List<String> matchedWords;
+	private RedditComment topComment;
+	private String guess;
+	private List<String> matchedWords;
 	
 	public MatchResult(RedditComment topComment, String guess) {
 		this.topComment = topComment;
