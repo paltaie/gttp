@@ -11,15 +11,23 @@ import com.paltaie.gttp.repository.CommentDao;
 public class CommentServiceImpl implements CommentService {
 
 	@Autowired
-	private CommentDao dao;
+	private CommentDao commentDao;
 
 	@Override
 	public RedditComment getTopComment(String subreddit, String threadId) {
 		try {
-			return dao.getTopComment(subreddit, threadId);
+			return commentDao.getTopComment(subreddit, threadId);
 		} catch (RedditException e) {
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	public CommentDao getCommentDao() {
+		return commentDao;
+	}
+
+	public void setCommentDao(CommentDao commentDao) {
+		this.commentDao = commentDao;
 	}
 }

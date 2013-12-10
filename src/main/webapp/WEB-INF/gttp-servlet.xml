@@ -7,6 +7,9 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
+        
+	<context:component-scan base-package="com.paltaie.gttp" />
+	
 	<bean
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="locations">
@@ -17,8 +20,6 @@
 	</bean>
 
 	<bean id="markdownProcessor" class="org.pegdown.PegDownProcessor" />
-
-	<context:component-scan base-package="com.paltaie.gttp" />
 
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
