@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<%@include file="/WEB-INF/jsp/head-include.jsp"%>
-		<title>Guess the Top Comment</title>
+		<title>Guess the Top Post</title>
 	</head>
 	<body>
 		<div class="container">
