@@ -1,7 +1,6 @@
 package com.paltaie.gttp.controllers;
 
-import javax.inject.Inject;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -11,18 +10,14 @@ import com.cd.reddit.json.mapping.RedditComment;
 import com.paltaie.gttp.service.CommentService;
 
 @Controller
-@RequestMapping
 public class CommentController {
-	
+
+	@Autowired
 	private CommentService commentService;
 	
-	@Inject
-	public CommentController(CommentService commentService) {
-		this.commentService = commentService;
-	}
-	
 	@RequestMapping("/topComment")
-	public ModelAndView getTopComment(@RequestParam("subreddit") String subreddit, @RequestParam("threadId") String threadId) {
+	public ModelAndView getTopComment(@RequestParam("subreddit") String subreddit,
+			@RequestParam("threadId") String threadId, @RequestParam("guess") String guess) {
 		ModelAndView mav = new ModelAndView("topComment");
 		RedditComment topComment = commentService.getTopComment(subreddit, threadId);
 		mav.addObject("topComment", topComment);
