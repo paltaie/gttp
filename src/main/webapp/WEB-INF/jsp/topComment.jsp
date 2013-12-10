@@ -9,27 +9,54 @@
 			<h1>Your guess</h1>
 			<div class="col-md-12">
 				<div class="bs-callout">
-					${guess}
+					<p>${result.guess}</p>
 				</div>
 			</div>
 			<h1>Top post
 				<small>
-					<span class="reddit-ups">+${topComment.ups}</span>, <span class="reddit-downs">-${topComment.downs}</span> by <a href="http://reddit.com/u/${topComment.author}">/u/${topComment.author}</a>
+					<span class="reddit-ups">+${result.topComment.ups}</span>, <span class="reddit-downs">-${result.topComment.downs}</span> by <a href="http://reddit.com/u/${result.topComment.author}">/u/${result.topComment.author}</a>
 				</small>
 			</h1>
 			<div class="col-md-12">
 				<div class="bs-callout">
-					<div class="markdownable highlight">${topComment.body}</div>
+					<div class="markdownable">${result.topComment.body}</div>
 				</div>
+			</div>
+			<h1>Match result <small id="matchPercent"></small></h1>
+			<div class="col-md-12">
+				<div class="bs-callout">
+					<p class="markdownable highlightable">${result.topComment.body}</p>
+				</div>
+			</div>
+			<div class="col-md-12">
+				<a class="btn btn-primary" href="<c:url value="/"/>">Try again</a>
 			</div>
 		</div>
 		<%@include file="/WEB-INF/jsp/footer.jsp" %>
 		<script type="text/javascript">
 			$(document).ready(function() {
 				var converter = new Showdown.converter();
-				var html = converter.makeHtml($(".markdownable").text());
-				$(".markdownable").html(html);
+				var highlightedLength = 0;
+				var topCommentLength = ${result.topComment.body.length()};
+				
+				$(".markdownable").each(function(index) {
+					var html = converter.makeHtml($(this).text());
+					$(this).html(html);
+				});
+
+				<c:forEach items="${result.matchedWords}" var="matchedWord">
+					$(".highlightable").highlight("${matchedWord}");
+				</c:forEach>
+				
+				$(".highlight").each(function(index) {
+					highlightedLength += $(this).text().length;
+				});
+				
+				var x = highlightedLength / topCommentLength;
+				
+				$("#matchPercent").text(Math.round(x*100, 2) + "% match");
 			});
+			
 		</script>
 	</body>
 </html>
