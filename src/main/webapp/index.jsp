@@ -8,13 +8,14 @@
 		<div class="container">
 			<div class="col-md-12">
 				<h1>Welcome to Guess the Top Post!</h1>
+        		<p class="lead">A satirical dig at the hivemind mentality - by <a href="http://github.com/paltaie">@paltaie</a></p>
 				<form role="form" method="post" action="<c:url value="/topComment.gttp"/>">
 					<div class="form-group col-md-6">
-						<label for="subreddit">Subreddit (http://www.reddit.com/r/<code>pics</code>/comments/92dd8/test_post_please_ignore/)</label>
+						<label for="subreddit">Subreddit (reddit.com/r/<code>pics</code>/comments/92dd8/test_post_please_ignore/)</label>
 						<input type="text" class="form-control" id="subreddit" name="subreddit" placeholder="Enter subreddit">
 					</div>
 					<div class="form-group col-md-6">
-						<label for="threadId">Thread ID (http://www.reddit.com/r/pics/comments/<code>92dd8</code>/test_post_please_ignore/)</label>
+						<label for="threadId">Thread ID (reddit.com/r/pics/comments/<code>92dd8</code>/test_post_please_ignore/)</label>
 						<input type="text" class="form-control" id="threadId" name="threadId" placeholder="Enter thread ID">
 					</div>
 					<div class="form-group col-md-8 col-md-offset-2">
