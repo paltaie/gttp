@@ -19,7 +19,7 @@
 					</div>
 					<div class="form-group col-md-8 col-md-offset-2">
 						<label for="guess">Your guess</label>
-						<input type="text" class="form-control" id="guess" name="guess" placeholder="&quot;fedorable m'lady my axe fingernails&quot;">
+						<input type="text" class="form-control" id="guess" name="guess" placeholder="fedorable m'lady my axe fingernails">
 					</div>
 					<div class="form-group col-md-2">
 						<button type="submit" class="btn btn-primary">Submit</button>
