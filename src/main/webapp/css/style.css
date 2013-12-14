@@ -13,3 +13,9 @@ body {
 .highlight {
 	background-color: #FFFF88;
 }
+
+.clickable {
+	cursor: pointer;
+	text-decoration: underline;
+	color: blue;
+}
