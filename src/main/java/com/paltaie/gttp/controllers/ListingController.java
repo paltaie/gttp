@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.cd.reddit.Reddit;
-import com.cd.reddit.RedditException;
 import com.cd.reddit.json.mapping.RedditLink;
 import com.paltaie.gttp.service.ThreadService;
 
@@ -23,7 +21,7 @@ public class ListingController {
 	public ModelAndView getSubreddit(@PathVariable("subreddit") String subreddit) {
 		ModelAndView mav = new ModelAndView("json/subreddit");
 		List<RedditLink> listing = null;
-		listing = threadService.getListing(subreddit, "top");
+		listing = threadService.getListing(subreddit, "hot");
 		mav.addObject("listing", listing);
 		return mav;
 	}
