@@ -25,12 +25,18 @@ public class CommentController {
 	@Autowired
 	private ThreadService threadService;
 	
-	@RequestMapping("/topComment")
+	@RequestMapping("/topComment.*")
 	public ModelAndView getTopComment(@RequestParam("subreddit") String subreddit,
 			@RequestParam("threadId") String threadId, @RequestParam("guess") String guess) {
 		ModelAndView mav = new ModelAndView("topComment");
 		RedditComment topComment = commentService.getTopComment(subreddit, threadId);
 		MatchResult result = matcherService.getMatchResult(topComment, guess);
+		if (result == null) {
+			mav.setViewName("error");
+			mav.addObject("subreddit", subreddit);
+			mav.addObject("threadId", threadId);
+			return mav;
+		}
 		RedditLink thread = threadService.getThread(subreddit, threadId);
 		mav.addObject("result", result);
 		mav.addObject("thread", thread);

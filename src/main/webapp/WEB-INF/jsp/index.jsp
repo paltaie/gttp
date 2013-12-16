@@ -61,7 +61,7 @@
 			populate("pics", 10, "#sub1col");
 			populate("funny", 10, "#sub2col");
 			populate("AdviceAnimals", 10, "#sub3col");
-			populate("cringepics", 10, "#sub4col");
+			//populate("cringepics", 10, "#sub4col");
 			
 			function populate(subreddit, count, target) {
 				$.get("<c:url value="/subreddit/"/>" + subreddit + ".gttp", function(data) {
@@ -76,7 +76,7 @@
 			}
 			
 			$("#customSubredditButton").click(function(event) {
-				$('<img src="<c:url value="/img/ajax-loader.gif"/>" alt="Please wait" id="sub4colspinner"/>').append("#sub4col");
+				$('<img src="<c:url value="/img/ajax-loader.gif"/>" alt="Please wait" id="sub4colspinner"/>').appendTo("#sub4col");
 				var subreddit = $("#customSubreddit").val();
 				$(this).parent().hide();
 				$("#customSubHeader").text("/r/" + subreddit);

@@ -9,20 +9,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.cd.reddit.json.mapping.RedditLink;
+import com.google.gson.Gson;
 import com.paltaie.gttp.service.ThreadService;
 
 @Controller
 public class ListingController {
-	
+
 	@Autowired
 	private ThreadService threadService;
-	
-	@RequestMapping("/subreddit/{subreddit}")
+
+	@RequestMapping("/subreddit/{subreddit}.*")
 	public ModelAndView getSubreddit(@PathVariable("subreddit") String subreddit) {
 		ModelAndView mav = new ModelAndView("json/subreddit");
-		List<RedditLink> listing = null;
-		listing = threadService.getListing(subreddit, "hot");
-		mav.addObject("listing", listing);
+		List<RedditLink> listing = threadService.getListing(subreddit, "hot");
+		Gson gson = new Gson();
+		mav.addObject("string", gson.toJson(listing));
 		return mav;
 	}
 }
