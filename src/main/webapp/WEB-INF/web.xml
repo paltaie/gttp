@@ -3,7 +3,7 @@
 	      http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	version="2.5">
 
-	<display-name>Archetype Created Web Application</display-name>
+	<display-name>GtTP</display-name>
 
 	<servlet>
 		<servlet-name>gttp</servlet-name>
