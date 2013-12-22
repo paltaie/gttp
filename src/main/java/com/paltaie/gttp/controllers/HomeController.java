@@ -13,7 +13,7 @@ public class HomeController {
 	@Autowired
 	private ThreadService threadService;
 	
-	@RequestMapping("/index")
+	@RequestMapping("/index.*")
 	public ModelAndView goHome() {
 		ModelAndView mav = new ModelAndView("index");
 		return mav;
