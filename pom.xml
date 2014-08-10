@@ -12,6 +12,7 @@
 		<jstl.version>1.2</jstl.version>
 		<raw4j.version>1.0-SNAPSHOT</raw4j.version>
 		<junit.version>4.11</junit.version>
+		<javaee-api.version>6.0</javaee-api.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -47,6 +48,12 @@
 			<version>${jstl.version}</version>
 		</dependency>
 		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>${javaee-api.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
 			<version>${org.springframework.version}</version>
@@ -60,6 +67,13 @@
 		</dependency>
 	</dependencies>
 	<build>
-		<finalName>gttp2</finalName>
+		<finalName>gttp</finalName>
+		<plugins>
+			<plugin>
+				<groupId>com.google.appengine</groupId>
+				<artifactId>appengine-maven-plugin</artifactId>
+				<version>1.8.8</version>
+			</plugin>
+		</plugins>
 	</build>
 </project>
