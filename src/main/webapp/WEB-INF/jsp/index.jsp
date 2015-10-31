@@ -24,7 +24,7 @@
 					</div>
 					<div class="row">
 						<div class="form-group col-md-4 col-md-offset-4">
-							<button type="submit" class="btn-block btn-primary">Submit</button>
+							<button type="submit" class="btn btn-block btn-primary">Submit</button>
 						</div>
 					</div>
 					<div class="row">
