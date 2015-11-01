@@ -42,7 +42,6 @@ import javax.servlet.http.HttpSession;
  * POSSIBILITY OF SUCH DAMAGE.
  * </pre>
  */
-@WebFilter(urlPatterns = "/*")
 public class DisableUrlSessionFilter implements Filter {
 
     /**
