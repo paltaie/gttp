@@ -23,7 +23,7 @@ public class RedditClient {
         headers.set("User-Agent", "MyApp/1.0");
         HttpEntity<String> entity = new HttpEntity<>(headers);
         ResponseEntity<String> responseEntity = restTemplate.exchange(
-                "https://www.reddit.com/r/{subreddit}/comments/{threadId}.json",
+                url,
                 HttpMethod.GET,
                 entity,
                 String.class,
