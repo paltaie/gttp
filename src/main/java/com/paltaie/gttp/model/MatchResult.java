@@ -2,8 +2,6 @@ package com.paltaie.gttp.model;
 
 import java.util.List;
 
-import com.cd.reddit.json.mapping.RedditComment;
-
 public class MatchResult {
 	private RedditComment topComment;
 	private String guess;

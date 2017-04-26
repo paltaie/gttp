@@ -1,8 +1,7 @@
 package com.paltaie.gttp.repository;
 
-import com.cd.reddit.RedditException;
-import com.cd.reddit.json.mapping.RedditComment;
+import com.paltaie.gttp.model.RedditComment;
 
 public interface CommentDao {
-	RedditComment getTopComment(String subreddit, String threadId) throws RedditException;
+	RedditComment getTopComment(String subreddit, String threadId);
 }

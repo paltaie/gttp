@@ -2,10 +2,10 @@ package com.paltaie.gttp.service;
 
 import java.util.List;
 
+import com.paltaie.gttp.model.RedditLink;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.cd.reddit.json.mapping.RedditLink;
 import com.paltaie.gttp.repository.ThreadDao;
 
 @Service
@@ -21,6 +21,6 @@ public class ThreadServiceImpl implements ThreadService {
 
 	@Override
 	public List<RedditLink> getListing(String subreddit, String type) {
-		return threadDao.getListing(subreddit, type);
+		return threadDao.getListing(subreddit);
 	}
 }

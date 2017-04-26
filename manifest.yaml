@@ -1,0 +1,8 @@
+---
+applications:
+ - name: gttp
+   random-route: true
+   path: target/gttp.war
+   memory: 256M
+   instances: 1
+buildpack: java_buildpack

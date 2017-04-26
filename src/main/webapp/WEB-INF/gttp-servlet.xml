@@ -18,10 +18,9 @@
 			</list>
 		</property>
 	</bean>
-	
-	<bean class="com.cd.reddit.Reddit" id="reddit">
-		<constructor-arg index="0" value="${app.name}"/>
-	</bean>
+
+	<bean id="restTemplate" class="org.springframework.web.client.RestTemplate"/>
+	<bean id="objectMapper" class="com.fasterxml.jackson.databind.ObjectMapper"/>
 
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.UrlBasedViewResolver">

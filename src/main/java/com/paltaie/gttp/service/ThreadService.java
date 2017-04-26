@@ -1,8 +1,8 @@
 package com.paltaie.gttp.service;
 
-import java.util.List;
+import com.paltaie.gttp.model.RedditLink;
 
-import com.cd.reddit.json.mapping.RedditLink;
+import java.util.List;
 
 public interface ThreadService {
 	RedditLink getThread(final String subreddit, final String threadId);

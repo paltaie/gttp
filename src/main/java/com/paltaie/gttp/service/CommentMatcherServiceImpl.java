@@ -3,9 +3,9 @@ package com.paltaie.gttp.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.paltaie.gttp.model.RedditComment;
 import org.springframework.stereotype.Service;
 
-import com.cd.reddit.json.mapping.RedditComment;
 import com.paltaie.gttp.model.MatchResult;
 
 @Service

@@ -1,13 +1,13 @@
 package com.paltaie.gttp.controllers;
 
+import com.paltaie.gttp.model.RedditComment;
+import com.paltaie.gttp.model.RedditLink;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.cd.reddit.json.mapping.RedditComment;
-import com.cd.reddit.json.mapping.RedditLink;
 import com.paltaie.gttp.model.MatchResult;
 import com.paltaie.gttp.service.CommentMatcherService;
 import com.paltaie.gttp.service.CommentService;

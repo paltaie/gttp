@@ -10,7 +10,7 @@
 			<div class="col-md-12">
 				<h1>Fedora results!</h1>
 				<div class="asdf">
-					<p>Thread: "<a target="_blank" href="${thread.url}">${thread.title}</a>" <c:if test="${not empty thread.url}">(<a href="${thread.url}">link</a>)</c:if></p> <span class="reddit-ups">${thread.ups}</span>, <span class="reddit-downs">${thread.downs}</span> by <a target="_blank" href="http://reddit.com/u/${thread.author}">/u/${thread.author}</a></p>
+					<p>Thread: "<a target="_blank" href="${thread.url}">${thread.title}</a>" <c:if test="${not empty thread.url}"></c:if></p> <span class="reddit-ups">${thread.ups}</span>, <span class="reddit-downs">${thread.downs}</span> by <a target="_blank" href="http://reddit.com/u/${thread.author}">/u/${thread.author}</a></p>
 				</div>
 			</div>
 			<div class="col-md-5 text-right">
