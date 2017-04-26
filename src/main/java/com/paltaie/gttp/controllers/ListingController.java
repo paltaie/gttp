@@ -15,10 +15,14 @@ import java.util.List;
 @Controller
 public class ListingController {
 
-	@Autowired
 	private ThreadService threadService;
-	@Autowired
 	private ObjectMapper objectMapper;
+
+	@Autowired
+	public ListingController(ThreadService threadService, ObjectMapper objectMapper) {
+		this.threadService = threadService;
+		this.objectMapper = objectMapper;
+	}
 
 	@RequestMapping("/subreddit/{subreddit}.*")
 	public ModelAndView getSubreddit(@PathVariable("subreddit") String subreddit) throws JsonProcessingException {

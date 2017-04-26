@@ -16,18 +16,20 @@ import com.paltaie.gttp.service.ThreadService;
 @Controller
 public class CommentController {
 
-	@Autowired
 	private CommentService commentService;
-	
-	@Autowired
 	private CommentMatcherService matcherService;
-	
-	@Autowired
 	private ThreadService threadService;
-	
+
+	@Autowired
+	public CommentController(CommentService commentService, CommentMatcherService matcherService, ThreadService threadService) {
+		this.commentService = commentService;
+		this.matcherService = matcherService;
+		this.threadService = threadService;
+	}
+
 	@RequestMapping("/topComment.*")
 	public ModelAndView getTopComment(@RequestParam("subreddit") String subreddit,
-			@RequestParam("threadId") String threadId, @RequestParam("guess") String guess) {
+									  @RequestParam("threadId") String threadId, @RequestParam("guess") String guess) {
 		ModelAndView mav = new ModelAndView("topComment");
 		RedditComment topComment = commentService.getTopComment(subreddit, threadId);
 		MatchResult result = matcherService.getMatchResult(topComment, guess);
@@ -35,13 +37,5 @@ public class CommentController {
 		mav.addObject("result", result);
 		mav.addObject("thread", thread);
 		return mav;
-	}
-
-	public CommentService getCommentService() {
-		return commentService;
-	}
-
-	public void setCommentService(CommentService commentService) {
-		this.commentService = commentService;
 	}
 }

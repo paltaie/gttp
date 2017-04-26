@@ -1,7 +1,10 @@
 package com.paltaie.gttp.model;
 
+import lombok.Data;
+
 import java.util.List;
 
+@Data
 public class MatchResult {
 	private RedditComment topComment;
 	private String guess;
@@ -10,25 +13,5 @@ public class MatchResult {
 	public MatchResult(RedditComment topComment, String guess) {
 		this.topComment = topComment;
 		this.guess = guess;
-	}
-	
-	public RedditComment getTopComment() {
-		return topComment;
-	}
-	public void setTopComment(RedditComment topComment) {
-		this.topComment = topComment;
-	}
-	public String getGuess() {
-		return guess;
-	}
-	public void setGuess(String guess) {
-		this.guess = guess;
-	}
-	public List<String> getMatchedWords() {
-		return matchedWords;
-	}
-
-	public void setMatchedWords(List<String> matchedWords) {
-		this.matchedWords = matchedWords;
 	}
 }

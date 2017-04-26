@@ -11,9 +11,13 @@ import com.paltaie.gttp.repository.ThreadDao;
 @Service
 public class ThreadServiceImpl implements ThreadService {
 
-	@Autowired
 	private ThreadDao threadDao;
-	
+
+	@Autowired
+	ThreadServiceImpl(ThreadDao threadDao) {
+		this.threadDao = threadDao;
+	}
+
 	@Override
 	public RedditLink getThread(String subreddit, String threadId) {
 		return threadDao.getThread(subreddit, threadId);

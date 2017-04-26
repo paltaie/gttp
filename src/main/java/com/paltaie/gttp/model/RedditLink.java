@@ -1,8 +1,11 @@
 package com.paltaie.gttp.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
-@lombok.Data
+@Data
+@EqualsAndHashCode
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class RedditLink {
     private String id;

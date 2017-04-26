@@ -17,7 +17,6 @@ public class CommentMatcherServiceTest {
 	private CommentMatcherService service;
 	
 	@Test
-	@Ignore
 	public void testMatch() {
 		RedditComment comment = new RedditComment();
 		comment.setBody("I am a test");
