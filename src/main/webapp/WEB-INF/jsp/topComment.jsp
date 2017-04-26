@@ -37,8 +37,8 @@
 			</div>
 			<hr/>
 			<div class="col-md-8 col-md-offset-4">
-				<a class="btn btn-default" id="tweetMe" target="_blank" href="https://twitter.com/intent/tweet?hashtags=gttp&amp;original_referer=https%3A%2F%2Fabout.twitter.com%2Fresources%2Fbuttons&amp;text=I%20was%20_percent_%20right%20in%20guessing%20_link_%27s%20top%20comment!&amp;tw_p=tweetbutton&amp;url=http%3A%2F%2Freddit-gttp.appspot.com"><span class="glyphicon glyphicon-retweet"></span>&nbsp;Tweet my score</a>
-				<a class="btn btn-default" id="fbMe" target="_blank" href="http://www.facebook.com/sharer.php?u=http://reddit-gttp.appspot.com&amp;t=I was _percent_ right in guessing _link_'s top comment!"><span class="glyphicon glyphicon-share"></span>&nbsp;Share on Facebook</a>
+				<a class="btn btn-default" id="tweetMe" target="_blank" href="https://twitter.com/intent/tweet?hashtags=gttp&amp;original_referer=https%3A%2F%2Fabout.twitter.com%2Fresources%2Fbuttons&amp;text=I%20was%20_percent_%20right%20in%20guessing%20_link_%27s%20top%20comment!&amp;tw_p=tweetbutton&amp;url=https%3A%2F%2Fgttp.mybluemix.net"><span class="glyphicon glyphicon-retweet"></span>&nbsp;Tweet my score</a>
+				<a class="btn btn-default" id="fbMe" target="_blank" href="http://www.facebook.com/sharer.php?u=https://gttp.mybluemix.net&amp;t=I was _percent_ right in guessing _link_'s top comment!"><span class="glyphicon glyphicon-share"></span>&nbsp;Share on Facebook</a>
 				<a class="btn btn-primary" href="<c:url value="/"/>">Try again</a>
 			</div>
 		</div>

@@ -11,6 +11,8 @@ import org.springframework.web.client.RestTemplate;
 @Component
 public class RedditClient {
 
+    private static final String USER_AGENT = "gttp/1.0";
+
     private RestTemplate restTemplate;
 
     @Autowired
@@ -20,7 +22,7 @@ public class RedditClient {
 
     public String makeRequest(String url, String... variables) {
         HttpHeaders headers = new HttpHeaders();
-        headers.set("User-Agent", "MyApp/1.0");
+        headers.set(HttpHeaders.USER_AGENT, USER_AGENT);
         HttpEntity<String> entity = new HttpEntity<>(headers);
         ResponseEntity<String> responseEntity = restTemplate.exchange(
                 url,
