@@ -7,19 +7,12 @@ import com.paltaie.gttp.model.RedditLink;
 import com.paltaie.gttp.model.RedditLinkWrapper;
 import com.paltaie.gttp.utils.RedditClient;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import static java.util.Arrays.asList;
 
 @Repository
 public class ThreadDaoImpl implements ThreadDao {
@@ -28,7 +21,7 @@ public class ThreadDaoImpl implements ThreadDao {
 	private ObjectMapper objectMapper;
 
 	@Autowired
-	public ThreadDaoImpl(RedditClient redditClient, ObjectMapper objectMapper) {
+	ThreadDaoImpl(RedditClient redditClient, ObjectMapper objectMapper) {
 		this.redditClient = redditClient;
 		this.objectMapper = objectMapper;
 	}
@@ -41,9 +34,8 @@ public class ThreadDaoImpl implements ThreadDao {
 				threadId);
 
 		try {
-			ArrayNode arrayNode = (ArrayNode) objectMapper.readTree(response);
-			ArrayNode arrayNode1 = (ArrayNode) arrayNode.get(0).get("data").get("children");
-			JsonNode jsonNode = arrayNode1.get(0);
+			ArrayNode arrayNode = (ArrayNode) objectMapper.readTree(response).get(0).get("data").get("children");
+			JsonNode jsonNode = arrayNode.get(0);
 			return objectMapper.treeToValue(jsonNode, RedditLinkWrapper.class).getData();
 		} catch (IOException e) {
 			e.printStackTrace();
