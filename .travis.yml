@@ -1,0 +1,8 @@
+language: java
+jdk:
+  - oraclejdk8
+deploy:
+  edge: true
+  provider: cloudfoundry
+  username: patrick.altaie@iconsolutions.com
+script: mvn clean package
