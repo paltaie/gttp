@@ -10,9 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import static java.util.stream.Collectors.toList;
 
 @Repository
 public class ThreadDaoImpl implements ThreadDao {
@@ -50,10 +51,10 @@ public class ThreadDaoImpl implements ThreadDao {
 				subreddit);
 		try {
 			ArrayNode arrayNode = (ArrayNode) objectMapper.readTree(response).get("data").get("children");
-			List<RedditLinkWrapper> redditLinkWrappers = Arrays.asList(objectMapper.treeToValue(arrayNode, RedditLinkWrapper[].class));
-			List<RedditLink> redditLinks = new ArrayList<>();
-			redditLinkWrappers.forEach(redditLinkWrapper -> redditLinks.add(redditLinkWrapper.getData()));
-			return redditLinks;
+			return Arrays
+					.stream(objectMapper.treeToValue(arrayNode, RedditLinkWrapper[].class))
+					.map(RedditLinkWrapper::getData)
+					.collect(toList());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
