@@ -69,8 +69,8 @@
 				
 				var href = $("#tweetMe").attr("href");
 				var fbHref = $("#fbMe").attr("href");
-				var moddedHref = href.replace("_percent_", matchPercent + "%25").replace("_link_", "http://redd.it/${thread.id}");
-				var moddedFbHref = fbHref.replace("_percent_", matchPercent + "%25").replace("_link_", "http://redd.it/${thread.id}");
+				var moddedHref = href.replace("_percent_", matchPercent + "%25").replace("_link_", "https://redd.it/${thread.id}");
+				var moddedFbHref = fbHref.replace("_percent_", matchPercent + "%25").replace("_link_", "https://redd.it/${thread.id}");
 				$("#tweetMe").attr("href", moddedHref);
 				$("#fbMe").attr("href", moddedFbHref);
 			});
