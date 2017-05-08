@@ -5,6 +5,8 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.paltaie.gttp.model.RedditComment;
 import com.paltaie.gttp.model.RedditCommentWrapper;
 import com.paltaie.gttp.utils.RedditClient;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -18,6 +20,7 @@ import static java.util.Comparator.comparingInt;
 @Repository
 public class CommentDaoImpl implements CommentDao {
 
+    private static final Logger LOG = LoggerFactory.getLogger(CommentDaoImpl.class);
     private RedditClient redditClient;
 	private ObjectMapper objectMapper;
 
@@ -42,7 +45,7 @@ public class CommentDaoImpl implements CommentDao {
                     .get("children");
             redditCommentWrappers = asList(objectMapper.treeToValue(arrayNode, RedditCommentWrapper[].class));
         } catch (IOException e) {
-            e.printStackTrace();
+            LOG.error("Encountered an error while reading response from reddit", e);
         }
         return redditCommentWrappers
                 .stream()

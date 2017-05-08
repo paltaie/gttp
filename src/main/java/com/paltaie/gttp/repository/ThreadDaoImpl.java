@@ -6,6 +6,8 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.paltaie.gttp.model.RedditLink;
 import com.paltaie.gttp.model.RedditLinkWrapper;
 import com.paltaie.gttp.utils.RedditClient;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -17,6 +19,7 @@ import static java.util.stream.Collectors.toList;
 
 @Repository
 public class ThreadDaoImpl implements ThreadDao {
+	private static final Logger LOG = LoggerFactory.getLogger(ThreadDaoImpl.class);
 
 	private RedditClient redditClient;
 	private ObjectMapper objectMapper;
@@ -35,11 +38,15 @@ public class ThreadDaoImpl implements ThreadDao {
 				threadId);
 
 		try {
-			ArrayNode arrayNode = (ArrayNode) objectMapper.readTree(response).get(0).get("data").get("children");
-			JsonNode jsonNode = arrayNode.get(0);
+			JsonNode jsonNode = objectMapper
+					.readTree(response)
+					.get(0)
+					.get("data")
+					.get("children")
+					.get(0);
 			return objectMapper.treeToValue(jsonNode, RedditLinkWrapper.class).getData();
 		} catch (IOException e) {
-			e.printStackTrace();
+			LOG.error("Encountered an error while reading response from reddit", e);
 		}
 		return null;
 	}
@@ -56,7 +63,7 @@ public class ThreadDaoImpl implements ThreadDao {
 					.map(RedditLinkWrapper::getData)
 					.collect(toList());
 		} catch (IOException e) {
-			e.printStackTrace();
+			LOG.error("Encountered an error while reading response from reddit", e);
 		}
 		return null;
 	}
