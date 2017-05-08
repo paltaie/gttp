@@ -8,7 +8,9 @@ import org.junit.Test;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Arrays;
+import java.util.List;
 
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.ModelAndViewAssert.assertModelAttributeValue;
@@ -27,9 +29,8 @@ public class ListingControllerTest {
 
     @Test
     public void getSubreddit() throws Exception {
-        ModelAndView mav = listingController.getSubreddit("SUBREDDIT");
-        assertViewName(mav, "json/subreddit");
-        assertModelAttributeValue(mav, "string", "[{\"id\":null,\"title\":null,\"ups\":0,\"downs\":0,\"url\":null,\"author\":null},{\"id\":null,\"title\":null,\"ups\":0,\"downs\":0,\"url\":null,\"author\":null}]");
+        List<RedditLink> redditLinks = listingController.getSubreddit("SUBREDDIT");
+        assertEquals(2, redditLinks.size());
     }
 
 }

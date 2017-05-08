@@ -21,13 +21,4 @@ public class GttpConfig {
     public ObjectMapper objectMapper() {
         return new ObjectMapper();
     }
-
-    @Bean
-    public UrlBasedViewResolver urlBasedViewResolver() {
-        UrlBasedViewResolver urlBasedViewResolver = new UrlBasedViewResolver();
-        urlBasedViewResolver.setViewClass(JstlView.class);
-        urlBasedViewResolver.setPrefix("/WEB-INF/jsp/");
-        urlBasedViewResolver.setSuffix(".jsp");
-        return urlBasedViewResolver;
-    }
 }

@@ -5,6 +5,7 @@ import com.paltaie.gttp.model.RedditLink;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -27,7 +28,7 @@ public class CommentController {
 		this.threadService = threadService;
 	}
 
-	@RequestMapping("/topComment.*")
+	@RequestMapping(value = "/topComment.*", method = RequestMethod.POST)
 	public ModelAndView getTopComment(@RequestParam("subreddit") String subreddit,
 									  @RequestParam("threadId") String threadId, @RequestParam("guess") String guess) {
 		ModelAndView mav = new ModelAndView("topComment");

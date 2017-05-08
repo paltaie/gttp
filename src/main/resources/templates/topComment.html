@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css"/>
+        <link rel="stylesheet" href="css/style.css"/>
+        <link rel="shortcut icon" href="img/favicon.ico"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <title>Result!</title>
+    </head>
+    <body>
+        <div class="container">
+
+            <div class="col-md-12">
+                <h1>Fedora results!</h1>
+                <div class="asdf">
+                    <p>Thread: "<a th:text="${thread.title}" target="_blank" th:href="${thread.url}"></a>"</p> <span class="reddit-ups" th:text="${thread.ups}"></span>, <span class="reddit-downs" th:text="${thread.downs}"></span> by <a th:text="'/u/' + ${thread.author}" target="_blank" th:href="'https://reddit.com/u/' + ${thread.author}"></a>
+                </div>
+            </div>
+            <div class="col-md-5 text-right">
+                <h1>Your guess</h1>
+                <div class="asdf">
+                    <p th:text="${result.guess}"></p>
+                </div>
+            </div>
+            <div class="col-md-6 col-md-offset-1">
+                <h1>Top post
+                    <small>
+                        <span class="reddit-ups" th:text="${result.topComment.ups}"></span>, <span class="reddit-downs" th:text="${result.topComment.downs}"></span> by <a th:href="'https://reddit.com/u/' + ${result.topComment.author}" th:text="'/u/' + ${result.topComment.author}"></a>
+                    </small>
+                </h1>
+                <div class="asdf">
+                    <div class="markdownable" th:text="${result.topComment.body}"></div>
+                </div>
+            </div>
+            <div class="col-md-12 text-center">
+                <h1>Match result <small id="matchPercent"><img src="img/ajax-loader.gif" alt="Calculating..."/></small></h1>
+                <div class="asdf">
+                    <p id="matchResult" class="markdownable highlightable" th:text="${result.topComment.body}"></p>
+                </div>
+            </div>
+            <hr/>
+            <div class="col-md-8 col-md-offset-4">
+                <a class="btn btn-default" id="tweetMe" target="_blank" href="https://twitter.com/intent/tweet?hashtags=gttp&amp;original_referer=https%3A%2F%2Fabout.twitter.com%2Fresources%2Fbuttons&amp;text=I%20was%20_percent_%20right%20in%20guessing%20_link_%27s%20top%20comment!&amp;tw_p=tweetbutton&amp;url=https%3A%2F%2Fgttp.mybluemix.net"><span class="glyphicon glyphicon-retweet"></span>&nbsp;Tweet my score</a>
+                <a class="btn btn-default" id="fbMe" target="_blank" href="http://www.facebook.com/sharer.php?u=https://gttp.mybluemix.net&amp;t=I was _percent_ right in guessing _link_'s top comment!"><span class="glyphicon glyphicon-share"></span>&nbsp;Share on Facebook</a>
+                <a class="btn btn-primary" href="/">Try again</a>
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery.js"></script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+        <script src="js/showdown.js"></script>
+        <script type="text/javascript" src="js/highlight.js"></script>
+        <script type="text/javascript" th:inline="javascript">
+            $(document).ready(function() {
+                var converter = new Showdown.converter();
+                var highlightedLength = 0;
+                var topComment = $("#matchResult").text().replace(/\s/g, "");
+                var topCommentLength = topComment.length;
+
+                $(".markdownable").each(function(index) {
+                    var html = converter.makeHtml($(this).text());
+                    $(this).html(html);
+                });
+
+                $(".highlight").each(function(index) {
+                    highlightedLength += $(this).text().length;
+                });
+
+                var matchPercent = Math.round((highlightedLength / topCommentLength) * 100, 2);
+
+                $("#matchPercent").text(matchPercent + "% match");
+
+                var redditId = [[${thread.id}]];
+                var href = $("#tweetMe").attr("href");
+                var fbHref = $("#fbMe").attr("href");
+                var moddedHref = href.replace("_percent_", matchPercent + "%25").replace("_link_", "https://redd.it/" + redditId);
+                var moddedFbHref = fbHref.replace("_percent_", matchPercent + "%25").replace("_link_", "https://redd.it/" + redditId);
+                $("#tweetMe").attr("href", moddedHref);
+                $("#fbMe").attr("href", moddedFbHref);
+            });
+        </script>
+    </body>
+</html>
