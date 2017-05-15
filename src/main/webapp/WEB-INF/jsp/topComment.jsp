@@ -30,7 +30,7 @@
 				</div>
 			</div>
 			<div class="col-md-12 text-center">
-				<h1>Match result <small id="matchPercent"><img src="<c:url value="/img/spinner.gif"/>" alt="Calculating..."/></small></h1>
+				<h1>Match result <small id="matchPercent"><img src="<c:url value="/img/ajax-loader.gif"/>" alt="Calculating..."/></small></h1>
 				<div class="asdf">
 					<p id="matchResult" class="markdownable highlightable">${result.topComment.body}</p>
 				</div>
