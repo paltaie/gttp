@@ -24,7 +24,7 @@ public class ListingControllerTest {
     @Before
     public void setUp() throws Exception {
         when(threadService.getListing("SUBREDDIT", "hot")).thenReturn(Arrays.asList(new RedditLink(), new RedditLink()));
-        listingController = new ListingController(threadService, new ObjectMapper());
+        listingController = new ListingController(threadService);
     }
 
     @Test
