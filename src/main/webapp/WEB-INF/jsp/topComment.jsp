@@ -20,7 +20,7 @@
 				</div>
 			</div>
 			<div class="col-md-6 col-md-offset-1">
-				<h1>Top post
+				<h1>Top comment
 					<small>
 						<span class="reddit-ups">${result.topComment.ups}</span>, <span class="reddit-downs">${result.topComment.downs}</span> by <a href="http://reddit.com/u/${result.topComment.author}">/u/${result.topComment.author}</a>
 					</small>
